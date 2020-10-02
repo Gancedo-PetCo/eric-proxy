@@ -5,7 +5,7 @@ const morgan = require('morgan');
 
 const server = express();
 
-server.use(morgan('dev'));
+// server.use(morgan('dev'));
 server.use(serveStatic('./client/'));
 
 server.get('/product', (req, res) => {
