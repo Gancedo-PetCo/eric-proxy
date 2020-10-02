@@ -13,7 +13,7 @@ export let errorRate = new Rate('errors');
 export const options = {
   stages: [
     { target: 1000, duration: '1m' },
-    { target: 1000, duration: '5m' },
+    { target: 1000, duration: '4m' },
   ],
   thresholds: {
     requests: ['count < 100'],
