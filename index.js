@@ -1,10 +1,11 @@
+// const newrelic = require('newrelic');
 const express = require('express');
 const serveStatic = require('serve-static');
 const morgan = require('morgan');
-
+const PORT = process.env.PORT || 3000;
 const server = express();
 
-server.use(morgan('dev'));
+// server.use(morgan('dev'));
 server.use(serveStatic('./client/'));
 
 server.get('/product', (req, res) => {
@@ -18,4 +19,6 @@ server.get('/product', (req, res) => {
   }
 });
 
-server.listen(3000);
+server.listen(PORT, () => {
+  console.log(`server is listening on port ${PORT}`);
+});
