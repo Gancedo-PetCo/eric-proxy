@@ -10,7 +10,7 @@ server.use(serveStatic('./client/'));
 
 server.get('/product/:itemId', (req, res) => {
   const itemIdNumber = req.params.itemId;
-
+  console.log('IN PRODUCT!', itemIdNumber);
   if (
     itemIdNumber < 99 ||
     itemIdNumber > 10000099 ||
