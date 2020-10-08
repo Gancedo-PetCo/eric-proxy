@@ -18,7 +18,9 @@ server.get('/product/:itemId', (req, res) => {
   ) {
     res.status(404).send('itemID invalid');
   } else {
-    res.sendFile(`${__dirname}/client/index.html`);
+    res.redirect(
+      `http://54.176.112.135:3002/descriptionObject/${itemIdNumber}`
+    );
   }
 });
 
