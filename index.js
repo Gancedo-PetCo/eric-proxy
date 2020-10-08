@@ -5,7 +5,7 @@ const morgan = require('morgan');
 const PORT = process.env.PORT || 3000;
 const server = express();
 
-// server.use(morgan('dev'));
+server.use(morgan('dev'));
 server.use(serveStatic('./client/'));
 
 server.get('/product/:itemId', (req, res) => {
