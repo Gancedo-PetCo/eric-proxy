@@ -8,9 +8,8 @@ const server = express();
 // server.use(morgan('dev'));
 server.use(serveStatic('./client/'));
 
-server.get('/product', (req, res) => {
-  const { itemID } = req.query;
-  const itemIdNumber = Number.parseInt(itemID, 10);
+server.get('/product/:itemId', (req, res) => {
+  const itemIdNumber = req.params.itemId;
 
   if (
     itemIdNumber < 99 ||
