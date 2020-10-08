@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/PetToyCo/nick-proxy-server#readme",
   "dependencies": {
+    "axios": "^0.20.0",
     "express": "^4.17.1",
     "morgan": "^1.10.0",
     "newrelic": "^6.13.1",
