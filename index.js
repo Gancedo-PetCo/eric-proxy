@@ -21,7 +21,7 @@ server.get('/product/:itemId', (req, res) => {
   } else {
     axios
       .get(
-        `http://${description1Address}:3002/descriptionObject/${itemIdNumber}`
+        `http://${description2Address}:3002/descriptionObject/${itemIdNumber}`
       )
       .then(({ data }) => res.send(data));
   }
