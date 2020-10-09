@@ -10,6 +10,8 @@ server.use(serveStatic('./client/'));
 
 server.get('/product/:itemId', (req, res) => {
   const itemIdNumber = req.params.itemId;
+  const description1Address = '54.176.112.135';
+  const description2Address = '54.151.77.163';
   if (
     itemIdNumber < 99 ||
     itemIdNumber > 10000099 ||
@@ -18,7 +20,9 @@ server.get('/product/:itemId', (req, res) => {
     res.status(404).send('itemID invalid');
   } else {
     axios
-      .get(`http://54.176.112.135:3002/descriptionObject/${itemIdNumber}`)
+      .get(
+        `http://${description1Address}:3002/descriptionObject/${itemIdNumber}`
+      )
       .then(({ data }) => res.send(data));
   }
 });
