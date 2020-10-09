@@ -12,6 +12,7 @@ server.get('/product/:itemId', (req, res) => {
   const itemIdNumber = req.params.itemId;
   const description1Address = '54.176.112.135';
   const description2Address = '54.151.77.163';
+  const NGINX_ADDRESS = '54.176.165.15';
   if (
     itemIdNumber < 99 ||
     itemIdNumber > 10000099 ||
@@ -20,9 +21,7 @@ server.get('/product/:itemId', (req, res) => {
     res.status(404).send('itemID invalid');
   } else {
     axios
-      .get(
-        `http://${description1Address}:3002/descriptionObject/${itemIdNumber}`
-      )
+      .get(`http://${NGINX_ADDRESS}:3002/descriptionObject/${itemIdNumber}`)
       .then(({ data }) => res.send(data));
   }
 });
