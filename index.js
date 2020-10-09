@@ -21,7 +21,9 @@ server.get('/product/:itemId', (req, res) => {
     res.status(404).send('itemID invalid');
   } else {
     axios
-      .get(`http://${NGINX_ADDRESS}:3002/descriptionObject/${itemIdNumber}`)
+      .get(
+        `http://${description1Address}:3002/descriptionObject/${itemIdNumber}`
+      )
       .then(({ data }) => res.send(data));
   }
 });
