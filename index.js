@@ -5,12 +5,11 @@ const morgan = require('morgan');
 const PORT = process.env.PORT || 3000;
 const server = express();
 const axios = require('axios');
-server.use(morgan('dev'));
+// server.use(morgan('dev'));
 server.use(serveStatic('./client/'));
 
 server.get('/product/:itemId', (req, res) => {
   const itemIdNumber = req.params.itemId;
-  console.log('IN PRODUCT!', itemIdNumber);
   if (
     itemIdNumber < 99 ||
     itemIdNumber > 10000099 ||
