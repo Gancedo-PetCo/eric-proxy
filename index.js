@@ -24,7 +24,8 @@ server.get('/product/:itemId', (req, res) => {
       .get(
         `http://${description1Address}:3002/descriptionObject/${itemIdNumber}`
       )
-      .then(({ data }) => res.send(data));
+      .then(({ data }) => res.send(data))
+      .catch((response) => res.status(500));
   }
 });
 
