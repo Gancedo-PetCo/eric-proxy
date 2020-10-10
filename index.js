@@ -22,7 +22,8 @@ server.get('/product/:itemId', (req, res) => {
   } else {
     axios
       .get(`http://${NGINX_ADDRESS}:3002/descriptionObject/${itemIdNumber}`)
-      .then(({ data }) => res.send(data));
+      .then(({ data }) => res.send(data))
+      .catch((response) => res.status(500));
   }
 });
 
