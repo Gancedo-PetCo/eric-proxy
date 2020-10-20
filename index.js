@@ -13,6 +13,8 @@ server.get('/product/:itemId', (req, res) => {
   const description1Address = '54.176.112.135';
   const description2Address = '54.151.77.163';
   const NGINX_ADDRESS = '54.176.165.15';
+  const NGINX_ADDRESS_BIG = '54.176.165.15';
+
   if (
     itemIdNumber < 99 ||
     itemIdNumber > 10000099 ||
