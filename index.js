@@ -28,31 +28,33 @@ server.get('/product/:itemId', (req, res) => {
     itemIdNumber === undefined
   ) {
     res.status(404).send('itemID invalid');
+  } else {
+    return redis_client.get(
+      `descriptionObjectServer${itemIdNumber}`,
+      (err, descriptionObject) => {
+        // check if the object is present in redis already
+        if (descriptionObject) {
+          res.send(descriptionObject);
+        }
+        //
+        else {
+          axios
+            .get(
+              `http://${NGINX_ADDRESS}:3002/descriptionObject/${itemIdNumber}`
+            )
+            .then(({ data }) => {
+              redis_client.setex(
+                `descriptionObjectServer${itemIdNumber}`,
+                300,
+                JSON.stringify(data)
+              );
+              res.send(data);
+            })
+            .catch((response) => res.status(500));
+        }
+      }
+    );
   }
-
-  return redis_client.get(
-    `descriptionObjectServer${itemIdNumber}`,
-    (err, descriptionObject) => {
-      // check if the object is present in redis already
-      if (descriptionObject) {
-        res.send(descriptionObject);
-      }
-      //
-      else {
-        axios
-          .get(`http://${NGINX_ADDRESS}:3002/descriptionObject/${itemIdNumber}`)
-          .then(({ data }) => {
-            redis_client.setex(
-              `descriptionObjectServer${itemIdNumber}`,
-              300,
-              JSON.stringify(data)
-            );
-            res.send(data);
-          })
-          .catch((response) => res.status(500));
-      }
-    }
-  );
 });
 
 server.listen(PORT, () => {
