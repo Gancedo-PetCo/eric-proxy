@@ -35,7 +35,7 @@ server.get('/product/:itemId', (req, res) => {
     (err, descriptionObject) => {
       // check if the object is present in redis already
       if (descriptionObject) {
-        res.send(data);
+        res.send(descriptionObject);
       }
       //
       else {
