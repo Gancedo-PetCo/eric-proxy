@@ -38,7 +38,7 @@ server.get('/product/:itemId', (req, res) => {
         }
         //
         else {
-          axios
+          return axios
             .get(
               `http://${NGINX_ADDRESS}:3002/descriptionObject/${itemIdNumber}`
             )
