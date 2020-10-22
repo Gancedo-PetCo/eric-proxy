@@ -45,7 +45,7 @@ server.get('/product/:itemId', (req, res) => {
             .then(({ data }) => {
               redis_client.setex(
                 `descriptionObjectServer${itemIdNumber}`,
-                300,
+                86400,
                 JSON.stringify(data)
               );
               res.send(data);
